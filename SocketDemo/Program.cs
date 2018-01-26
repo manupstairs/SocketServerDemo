@@ -10,7 +10,7 @@ namespace ServerSocket
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Hello World! I'm server!");
             Socket serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             IPAddress ip = IPAddress.Any;
             IPEndPoint point = new IPEndPoint(ip, 2333);
@@ -68,7 +68,7 @@ namespace ServerSocket
                 }
                 var str = Encoding.UTF8.GetString(buffer, 0, effective);
                 Console.WriteLine(str);
-                var buffers = Encoding.UTF8.GetBytes("Server Return Message");
+                var buffers = Encoding.UTF8.GetBytes($"Server Return Message:{str}");
                 send.Send(buffers);
             }
         }
